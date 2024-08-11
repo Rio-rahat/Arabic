@@ -15,7 +15,15 @@ body {
     
 }
 
+/* Remove default focus styles */
+*:focus {
+  outline: none;
+}
 
+/* Remove tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 
 .container {
     display: flex;
