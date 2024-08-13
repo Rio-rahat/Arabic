@@ -11,8 +11,28 @@ function createLetterDivs() {
         letterDiv.textContent = letter;
 
         letterDiv.addEventListener('click', () => playLetterSound(letter));
+        letterDiv.addEventListener('contextmenu', (e) => e.preventDefault()); // Prevents context menu on long press
 
         container.appendChild(letterDiv);
+    });
+
+    // Add dynamic tilt effect
+    container.addEventListener('mousemove', (e) => {
+        const width = container.offsetWidth;
+        const height = container.offsetHeight;
+        const centerX = container.offsetLeft + width / 2;
+        const centerY = container.offsetTop + height / 2;
+        const mouseX = e.clientX - centerX;
+        const mouseY = e.clientY - centerY;
+
+        const rotateX = (-1) * (mouseY / height) * 15;
+        const rotateY = (mouseX / width) * 15;
+
+        container.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    container.addEventListener('mouseleave', () => {
+        container.style.transform = `perspective(1000px) rotateX(0) rotateY(0)`;
     });
 }
 
@@ -26,11 +46,10 @@ function loadAudioFiles() {
         letterAudioMap[letter] = audioElement;
     });
 }
-// Function to play the Arabic letter pronunciation
-// Dictionary to store audio elements for each letter
-const letterAudioMap = {};
 
 // Function to play the Arabic letter pronunciation
+const letterAudioMap = {};
+
 function playLetterSound(letter) {
     const audioElement = letterAudioMap[letter];
 
@@ -40,8 +59,6 @@ function playLetterSound(letter) {
         audioElement.play();
     }
 }
-
-
 
 // Initialize the website
 createLetterDivs();
