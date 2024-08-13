@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Language" content="ar">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Arabic Letter Pronunciation</title>
-</head>
-
-<body>
-    <div class="container">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Language" content="ar" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
+    <link rel="stylesheet" href="style.css" />
+    <title>نطق الحروف العربية</title>
+  </head>
+  <body>
+    <div id="vanta-bg">
+      <div class="container">
         <!-- Arabic letter divs will be generated here -->
+      </div>
     </div>
     <audio id="audioPlayer" preload="auto">
-        <!-- Arabic letter audio files will be loaded here -->
+      <!-- Arabic letter audio files will be loaded here -->
     </audio>
     <script src="main.js"></script>
-</body>
-
+    <script src="three.r134.min.js"></script>
+    <script src="vanta.waves.min.js"></script>
+    <script>
+      VANTA.WAVES({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0x6b24,
+        shininess: 104.0,
+        waveHeight: 40.0,
+        waveSpeed: 1.8,
+        zoom: 0.65,
+      });
+    </script>
+  </body>
 </html>
